@@ -1,6 +1,7 @@
 # A docker-compose.yml file for the latest mysql-and phpmyadmin images running on a docker.
 
 ```
- To install it, download the docker-compose.yml file. create an .env file in the same directory where the docker-compose is placed.
- The .env file should contain the DB_USER and DB_PASSWORD environment variables which are used in the docker-compose.
+ To install it, pull this repository and open the .env file to adjust the
+ DB_USER and DB_PASSWORD environment variables which are used in the docker-compose.
+ After that execute the command docker-compose up to run the docker.
 ```
