@@ -1,0 +1,33 @@
+version: "3.7"
+
+services: 
+  mysql-server:
+    image: mysql:latest
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD} # dockerpass
+    volumes:
+      - type: volume
+        source: mysql-data
+        target: /var/lib/mysql
+    networks:
+      - backend-network
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    networks:
+        - backend-network
+    environment:
+      - PMA_HOST=mysql-server
+      - PMA_USER=${DB_USER}
+      - PMA_PASSWORD=${DB_PASSWORD} # dockerpass
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql-server
+
+volumes: 
+    mysql-data:
+networks:
+    backend-network:
